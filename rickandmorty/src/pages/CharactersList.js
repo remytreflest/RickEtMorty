@@ -1,8 +1,14 @@
-import CharacterCardList from "../components/CharacterCardList.js"
+import { generateDOMCharactersList } from "../components/CharacterCardList.js";
+import ApiClient from "../utils/ApiClient.js";
+import { mapJsonToCharactersCard } from "../utils/MapperExtension.js";
 
-const ShowCharacterList = async () => {
-  const res = await fetchCharacters()
-  return CharacterCardList(res.data)
+let apiClient = new ApiClient();
+
+const charactersList = async () => {
+  const data = await apiClient.getCharactersPaginated();
+  const characters = mapJsonToCharactersCard(
+      data.results  );
+  return generateDOMCharactersList(characters)
 }
 
-export default CharactersList
+export default charactersList

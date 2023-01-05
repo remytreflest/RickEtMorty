@@ -4,7 +4,7 @@
  * @returns {{children: [{attributes: [{src: *}], tagName: string, classList: string[]},{children: [{children: [{children: [{tagName: string, classList: string[]}], attributes: [{target: string},{textContent: number | "fulfilled" | FontFaceSetLoadStatus | string | FontFaceLoadStatus | "rejected"}], tagName: string, classList: string[]}], attribute: [{textContent}], tagName: string, classList: string[]},{children: [{attributes: [{textContent: string},{target: string}], tagName: string, classList: string[]},{attributes: [{textContent: *}], tagName: string, classList: string[]}], tagName: string, classList: string[]},{children: [{attributes: [{textContent: string},{target: string}], tagName: string, classList: string[]},{attributes: [{textContent: *}], tagName: string, classList: string[]}], tagName: string, classList: string[]}], tagName: string, classList: string[]}], tagName: string, classList: string[]}}
  * @constructor
  */
-export function generateCharacterCard({ character }) {
+export function generateCharacterCard(character) {
     return {
       tagName: 'div',
       classList: ['card'],
@@ -12,9 +12,9 @@ export function generateCharacterCard({ character }) {
         {
           tagName: 'img',
           classList: ['card-img'],
-          attributes: [
-              { src: character.picture }
-          ]
+          attributes: {
+              "src" : character.picture
+          }
         },
         {
           tagName: 'div',
@@ -23,17 +23,15 @@ export function generateCharacterCard({ character }) {
             {
               tagName: 'h2',
               classList: ['character-name', 'link'],
-              attribute: [
-                { textContent: character.name }
-              ],
+              text: character.name,
               children: [
                 {
                   tagName: 'span',
                   classList: ['status'],
-                  attributes: [
-                    { 'target': '_blank', },
-                    { textContent: character.status }
-                  ],
+                  text: character.status,
+                  attributes: {
+                     'target': '_blank',
+                  },
                   children: [
                     {
                       tagName: 'span',
@@ -50,38 +48,34 @@ export function generateCharacterCard({ character }) {
                 {
                   tagName: 'span',
                   classList: ['text-gray'],
-                  attributes: [
-                    { textContent: 'Last known location :' },
-                    { target: '_blank' }
-                  ]
+                  text: 'Last known location :',
+                  attributes: {
+                    target: '_blank'
+                  }
                 },
                 {
                   tagName: 'a',
                   classList: ['link', 'last-location'],
-                  attributes: [
-                    { textContent: character.lastKnownLocation }
-                  ]
+                  text: character.lastKnownLocation,
                 }
               ]
             },
             {
               tagName: 'div',
               classList: ['section'],
+              text: 'First seen in :',
               children: [
                 {
                   tagName: 'span',
                   classList: ['text-gray'],
-                  attributes: [
-                    { textContent: 'First seen in :' },
-                    { target: '_blank' },
-                  ]
+                  attributes: {
+                    target: '_blank'
+                  }
                 },
                 {
                   tagName: 'a',
                   classList: ['link', 'first-location'],
-                  attributes: [
-                    { textContent: character.firstSeenLocation }
-                  ]
+                  text: character.firstSeenLocation,
                 }
               ]
             }
