@@ -1,6 +1,6 @@
 import './style.css'
-import Card from "./src/components/Card";
-import UserPage from "./src/pages/UserPage";
+import CharacterCard from "./src/components/CharacterCard.js";
+import UserPage from "./src/pages/CharactersList.js";
 import TabManager from "./src/utils/TabManager";
 
 const rootElement = document.querySelector('#app')
@@ -10,8 +10,8 @@ const tabManager = new TabManager(rootElement, {
     component: () => document.createElement('div'),
     params: [{ src: 'http://placekitten.com/200/200', text: 'A cat' }]
   },
-  user: {
-    component: UserPage,
+  charactersList: {
+    component: CharactersList,
   }
 })
 
