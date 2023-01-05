@@ -1,14 +1,24 @@
-.users {
+.characters {
+  padding-left: 15%;
+  padding-right: 15%;
   display: grid;
-  max-width: 780px;
-  margin: 0 auto;
   grid-template-columns: repeat(3, 1fr);
 }
 
-.users div {
+.card {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin: 8px;
+  align-items: center;
   text-align: center;
+  flex-direction: column;
+  margin: 35px;
+  border-radius: 15px;
+}
+
+.card-description {
+
+}
+
+.card-img {
+  width: 100%;
+  border-radius: 15px;
 }
