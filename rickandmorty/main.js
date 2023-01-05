@@ -1,23 +1,24 @@
 import './style.css'
-import javascriptLogo from './javascript.svg'
-import { setupCounter } from './counter.js'
+import Card from "./src/components/Card";
+import UserPage from "./src/pages/UserPage";
+import TabManager from "./src/utils/TabManager";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const rootElement = document.querySelector('#app')
 
-setupCounter(document.querySelector('#counter'))
+const tabManager = new TabManager(rootElement, {
+  page1: {
+    component: () => document.createElement('div'),
+    params: [{ src: 'http://placekitten.com/200/200', text: 'A cat' }]
+  },
+  user: {
+    component: UserPage,
+  }
+})
+
+tabManager.openTabById('user')
+
+document.querySelectorAll('[data-tabId]').forEach(element => {
+  element.addEventListener('click', () => {
+    tabManager.openTabById(element.getAttribute('data-tabId'))
+  })
+})
