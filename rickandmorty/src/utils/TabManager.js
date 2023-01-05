@@ -8,7 +8,9 @@ class TabManager {
       if (!(id in this.componentMapping)) {
         throw new Error('This id is not valid')
       }
+      console.log(JSON.stringify(this.componentMapping[id]))
       const { component, params = [] } = this.componentMapping[id]
+      console.log("params" + JSON.stringify(params));
       const Component = await component(...params)
       this.rootElement.innerHTML = ''
       this.rootElement.appendChild(Component)

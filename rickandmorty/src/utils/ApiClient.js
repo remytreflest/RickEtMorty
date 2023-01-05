@@ -21,9 +21,14 @@ class ApiClient {
 
     async getDatasFromUrl(url){
         try {
-            const request = await fetch(url);
-            const response = await request.json();
-            return response;
+            const request = await fetch(url)
+                .then((data) => data.json())
+                .then(data => { if("error" in data){
+                    return [];
+                } else {
+                    return data;
+                }});
+            return request;
         } catch(ex){
             throw new Error(ex);
         }
