@@ -7,9 +7,11 @@ import { mapJsonToCharactersCard } from './src/utils/MapperExtension';
 
 const rootElement = document.querySelector('#app')
 const apiClient = new ApiClient();
+
 const datas = await apiClient.getCharactersPaginated(3);
 console.log(mapJsonToCharactersCard(datas.results));
 // console.log(apiClient.getCharactersFilteredByName('rick'));
+
 const tabManager = new TabManager(rootElement, {
   page1: {
     component: () => document.createElement('div'),
