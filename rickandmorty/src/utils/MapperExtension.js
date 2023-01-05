@@ -1,14 +1,14 @@
 export function mapJsonToCharactersCard(jsonFile){
-    console.log(jsonFile);
     return jsonFile.map((element) => {
-        return {
-            "picture": element.image,
-            "name": element.name,
-            "status": element.status,
-            "lastKnownLocation": element.location.name,
-            "firstSeenLocation": element.origin.name
+            return {
+                "picture": element.image,
+                "name": element.name,
+                "status": element.status,
+                "lastKnownLocation": element.location.name,
+                "firstSeenLocation": element.origin.name
+            }
         }
-    })
+    )
 }
 
 export function mapJsonToCharacterCard(jsonFile){

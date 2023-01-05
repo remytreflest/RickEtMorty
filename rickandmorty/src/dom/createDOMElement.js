@@ -1,4 +1,4 @@
-const createElement = (obj) => {
+const createDOMElement = (obj) => {
   if (!('tagName' in obj)) {
     throw new Error('element should have a tagName');
   }
@@ -33,11 +33,11 @@ export const createBulkElements = (arrayOfTree) => {
   const array = [];
 
   arrayOfTree.forEach((child) => {
-    array.push(createElement(child));
+    array.push(createDOMElement(child));
   });
 
   return array;
 };
 
 
-export default createElement
+export default createDOMElement
