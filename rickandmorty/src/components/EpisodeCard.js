@@ -5,13 +5,13 @@ export function generateEpisodeCard(episode) {
       tagName: 'div',
       classList: ['card-character'],
       attributes: {
-        'data-id': character.id
+        'data-id': episode.id
       },
       children: [
             {
                 tagName: 'div',
                 classList: ['card-header-character'],
-                text: character.text // sera pas exactement ça
+                text: `${episode.name} : ${episode.episode} - ${episode.air_date}`
             },
             {
                 tagName: 'div',

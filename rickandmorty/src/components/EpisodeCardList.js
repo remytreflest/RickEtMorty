@@ -1,11 +1,13 @@
-import { generateEpisodeCharacterCard } from "./EpisodeCharacter";
+import createDOMElement from "../dom/createDOMElement";
+import { generateEpisodeCard } from "./EpisodeCard";
 
-export default function generateDOMCharactersList(episodeList) {
+export default function generateDOMEpisodesList(episodeList) {
+  console.log("episodeList : " + JSON.stringify(episodeList))
     return createDOMElement({
       tagName: 'div',
       classList: ['episode'],
       children: episodeList.map((character) =>
-        generateEpisodeCharacterCard(character)
+        generateEpisodeCard(character)
       )
     })
   }
