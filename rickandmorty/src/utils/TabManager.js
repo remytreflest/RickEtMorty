@@ -22,6 +22,7 @@ class TabManager {
         },
         episodesList: {
           component: episodesList,
+          params: [{ page: 0 }]
         }
       }
     }
@@ -31,7 +32,6 @@ class TabManager {
         throw new Error('This id is not valid')
       }
       const { component, params = [] } = this.componentMapping[id]
-      console.log("params" + JSON.stringify(params));
       const Component = await component(...params)
       this.rootElement.innerHTML = ''
       this.rootElement.appendChild(Component)
