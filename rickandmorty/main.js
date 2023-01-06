@@ -21,3 +21,18 @@ document.getElementById("submitSearch").addEventListener('click', () => {
   tabManager.componentMapping.searchingPage.params = [{ name: value }];
   tabManager.openTabById('searchingPage');
 })
+
+document.getElementById("charactersList").addEventListener('click', () => {
+  setTimeout(() => {
+    var htmlElement = document.documentElement;
+    var bodyElement = document.body;
+    var height = Math.max(
+      htmlElement.clientHeight, htmlElement.scrollHeight, htmlElement.offsetHeight,
+      bodyElement.scrollHeight, bodyElement.offsetHeight);
+      console.log(height)
+      console.log(document.querySelector('.pagination-div').height)
+      document.querySelector('.pagination-div').style.height = (height - 300) + "px";
+      console.log(document.querySelector('.pagination-div').height)
+  }, 1000);
+})
+
