@@ -24,6 +24,10 @@ class ApiClient {
         return await this.performGraphQLQuery(` 
             query GetEpisodes($page: Int!) {
                 episodes(page: $page) {
+                    info {
+                        next
+                        prev
+                      }
                     results {
                         name
                         air_date
