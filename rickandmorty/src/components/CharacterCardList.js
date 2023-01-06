@@ -10,6 +10,8 @@ export default function generateDOMCharactersList(characterList) {
   return createDOMElement({
     tagName: 'div',
     classList: ['characters'],
-    children: characterList.map((character) => generateCharacterCard(character))
+    children: characterList.map((character) =>
+      generateCharacterCard(character)
+    )
   })
 }

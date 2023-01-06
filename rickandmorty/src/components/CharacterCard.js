@@ -8,7 +8,15 @@ export function generateCharacterCard(character) {
   console.log(character)
     return {
       tagName: 'div',
-      classList: ['card'],
+      classList: ['card'],eventListener: {
+        name: 'click',
+        function: () => {
+          console.log("HELLO")
+        }
+      },
+      attributes: {
+        'data-id': character.id
+      },
       children: [
         {
           tagName: 'img',
@@ -49,7 +57,7 @@ export function generateCharacterCard(character) {
                 {
                   tagName: 'span',
                   classList: ['text-gray'],
-                  text: 'Last known location :',
+                  text: 'Last known location : ',
                   attributes: {
                     target: '_blank'
                   }
@@ -64,7 +72,7 @@ export function generateCharacterCard(character) {
             {
               tagName: 'div',
               classList: ['section'],
-              text: 'First seen in :',
+              text: 'First seen in : ',
               children: [
                 {
                   tagName: 'span',

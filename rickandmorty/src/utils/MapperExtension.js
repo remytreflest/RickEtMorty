@@ -5,11 +5,12 @@ export function mapJsonToCharactersCard(jsonFile){
     console.log(jsonFile)
     return jsonFile.map((element) => {
             return {
-                "picture": element.image ?? "undefined",
-                "name": element.name ?? "undefined",
-                "status": element.status ?? "undefined",
-                "lastKnownLocation": element.location == undefined ? "undefined" : (element.location.name ?? "undefined"),
-                "firstSeenLocation": element.origin == undefined ? "undefined" : (element.origin.name ?? "undefined"),
+                "id": element.id,
+                "picture": element.image,
+                "name": element.name,
+                "status": element.status,
+                "lastKnownLocation": element.location.name,
+                "firstSeenLocation": element.origin.name
             }
         }
     )
@@ -21,11 +22,12 @@ export function mapJsonToCharacterCard(jsonFile){
     }
     
     return {
-        "picture": element.image ?? "undefined",
-        "name": element.name ?? "undefined",
-        "status": element.status ?? "undefined",
-        "lastKnownLocation": element.location == undefined ? "undefined" : (element.location.name ?? "undefined"),
-        "firstSeenLocation": element.origin == undefined ? "undefined" : (element.origin.name ?? "undefined"),
+        "id": jsonFile.id,
+        "picture": jsonFile.image,
+        "name": jsonFile.name,
+        "status": jsonFile.status,
+        "lastKnownLocation": jsonFile.location.name,
+        "firstSeenLocation": jsonFile.origin.name
     }
 }
 
