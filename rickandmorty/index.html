@@ -16,14 +16,41 @@
       <button data-tabId="charactersList" class="custom-btn btn-5 orange">Liste des personnages</button>
       <button data-tabId="searchingPage" class="custom-btn btn-5 purple">Recherche de personnage</button>
       <button data-tabId="episodesList" class="custom-btn btn-5 blue">Liste des épisodes</button>
-      <div id="searchInputDiv" class="group">
-        <input type="text" name="searchInput" id="searchInput">
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label for="searchInput">Nom du personnage :</label>
+
+      <div id="search-bar">
+        <div id="searchInputDiv" class="group">
+          <label for="searchInput">Nom du personnage :</label>
+          <input type="text" name="searchInput" id="searchInput">
+          <span class="highlight"></span>
+          <span class="bar"></span>
+        </div>
+        <div id="searchFilterDiv" class="group">
+          <label for="search-filter-select">Filtre</label>
+          <select name="search-filter-select" id="search-filter-select">
+
+          </select>
+        </div>
         <button id="submitSearch">Rechercher</button>
       </div>
     </header>
+
+    <!-- SEARCH BAR SCRIPT -->
+    <script type="module">
+      import createDOMElement from "./src/dom/createDOMElement.js";
+
+      const searchFilterSelect = document.getElementById("search-filter-select");
+      ['name', 'status', 'species', 'type', 'gender'].forEach((filter) => {
+        let filterDOMElement = createDOMElement({
+          tagName: 'option',
+          text: filter,
+          attributes: {
+            value: filter
+          }
+        })
+        searchFilterSelect.appendChild(filterDOMElement)
+      })
+    </script>
+
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
   </body>
