@@ -6,7 +6,7 @@ import createDOMElement from "../dom/createDOMElement.js";
  * @param characterList
  * @constructor
  */
-export function generateDOMCharactersList(characterList) {
+export default function generateDOMCharactersList(characterList) {
   return createDOMElement({
     tagName: 'div',
     classList: ['characters'],

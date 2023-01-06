@@ -1,4 +1,4 @@
-import { generateDOMCharactersList } from "../components/CharacterCardList.js";
+import generateDOMCharactersList from "../components/CharacterCardList.js";
 import ApiClient from "../utils/ApiClient.js";
 import { mapJsonToCharactersCard } from "../utils/MapperExtension.js";
 
