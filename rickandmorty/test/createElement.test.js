@@ -1,6 +1,5 @@
 import { expect, test } from 'vitest';
 import createDOMElement from '../src/dom/createDOMElement';
-import charactersList from '../src/pages/CharactersList';
 
 const tree = {
     tagName: 'div',
