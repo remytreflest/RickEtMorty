@@ -17,7 +17,7 @@ export function mapJsonToCharactersCard(jsonFile){
 }
 
 export function mapJsonToCharacterCard(jsonFile){
-    if(jsonFile == []){
+    if(jsonFile === []){
         return [];
     }
 

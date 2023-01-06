@@ -1,6 +1,7 @@
 import Character from "../pages/Character"
 import charactersList from "../pages/CharactersList"
 import SearchingPage from "../pages/SearchingPage"
+import episodesList from "../pages/EpisodesList.js";
 
 class TabManager {
     constructor(rootElement) {
@@ -17,6 +18,9 @@ class TabManager {
         character: {
           component: Character,
           params: [{ id : 0}]
+        },
+        episodesList: {
+          component: episodesList,
         }
       }
     }
