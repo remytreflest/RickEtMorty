@@ -8,11 +8,18 @@
   </head>
   <body>
     <header>
-      <button data-tabId="charactersList">charactersList</button>
-      <button data-tabId="searchingPage">searchingPage</button>
-      <div id="searchInputDiv">
-        <label for="searchInput">Nom du personnage :</label>
+      <div style="width:100%">
+        <div class="container">
+          <div class="title">RICK & MORTY</div>
+        </div>
+      </div>
+      <button data-tabId="charactersList" class="custom-btn btn-5 orange">Liste des personnages</button>
+      <button data-tabId="searchingPage" class="custom-btn btn-5 purple">Recherche de personnage</button>
+      <div id="searchInputDiv" class="group">
         <input type="text" name="searchInput" id="searchInput">
+        <span class="highlight"></span>
+        <span class="bar"></span>
+        <label for="searchInput">Nom du personnage :</label>
         <button id="submitSearch">Rechercher</button>
       </div>
     </header>
