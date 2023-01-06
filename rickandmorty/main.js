@@ -1,27 +1,18 @@
 import './style.css'
-import SearchingPage from './src/pages/SearchingPage';
 import TabManager from "./src/utils/TabManager";
-import CharactersList from "./src/pages/CharactersList.js";
-import Character from "./src/pages/Character";
 
 const rootElement = document.querySelector('#app')
-const tabManager = new TabManager(rootElement, {
-
-  searchingPage: {
-    component: SearchingPage,
-    params: [{ name: "" }]
-  },
-  charactersList: {
-    component: CharactersList,
-  },
-  character: {
-    component: Character,
-  }
-})
+const tabManager = new TabManager(rootElement);
+const searchDiv = document.getElementById('searchInputDiv');
 
 document.querySelectorAll('[data-tabId]').forEach(element => {
   element.addEventListener('click', () => {
     tabManager.openTabById(element.getAttribute('data-tabId'))
+    if(element.getAttribute('data-tabId') == 'searchingPage'){
+      searchDiv.style.display = 'block';
+    } else {
+      searchDiv.style.display = 'none';
+    }
   })
 })
 

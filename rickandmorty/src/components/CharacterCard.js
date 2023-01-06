@@ -1,3 +1,5 @@
+import TabManager from "../utils/TabManager"
+
 /**
  * Generate a character object that is usable by the createDOMElement() method
  * @param character
@@ -5,13 +7,14 @@
  * @constructor
  */
 export function generateCharacterCard(character) {
-  console.log(character)
     return {
       tagName: 'div',
       classList: ['card'],eventListener: {
         name: 'click',
         function: () => {
-          console.log("HELLO")
+          const tabManager = new TabManager(document.querySelector('#app'));
+          tabManager.componentMapping.character.params = [{ id : character.id}]
+          tabManager.openTabById('character');
         }
       },
       attributes: {

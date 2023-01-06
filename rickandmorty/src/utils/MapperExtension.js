@@ -2,7 +2,7 @@ export function mapJsonToCharactersCard(jsonFile){
     if(jsonFile == []){
         return [];
     }
-    console.log(jsonFile)
+
     return jsonFile.map((element) => {
             return {
                 "id": element.id,
@@ -20,7 +20,7 @@ export function mapJsonToCharacterCard(jsonFile){
     if(jsonFile == []){
         return [];
     }
-    
+
     return {
         "id": jsonFile.id,
         "picture": jsonFile.image,

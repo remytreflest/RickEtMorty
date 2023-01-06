@@ -1,14 +1,30 @@
+import Character from "../pages/Character"
+import charactersList from "../pages/CharactersList"
+import SearchingPage from "../pages/SearchingPage"
+
 class TabManager {
-    constructor(rootElement, componentMapping) {
+    constructor(rootElement) {
       this.rootElement = rootElement
-      this.componentMapping = componentMapping
+      this.componentMapping = {
+
+        searchingPage: {
+          component: SearchingPage,
+          params: [{ name: "" }]
+        },
+        charactersList: {
+          component: charactersList,
+        },
+        character: {
+          component: Character,
+          params: [{ id : 0}]
+        }
+      }
     }
   
     async openTabById(id) {
       if (!(id in this.componentMapping)) {
         throw new Error('This id is not valid')
       }
-      console.log(JSON.stringify(this.componentMapping[id]))
       const { component, params = [] } = this.componentMapping[id]
       console.log("params" + JSON.stringify(params));
       const Component = await component(...params)
