@@ -26,6 +26,10 @@ const createDOMElement = (obj) => {
     });
   }
 
+  if ('eventListener' in obj) {
+    element.addEventListener(obj.eventListener.name, obj.eventListener.function);
+  }
+
   return element;
 };
 

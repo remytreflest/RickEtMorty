@@ -1,6 +1,7 @@
 export function mapJsonToCharactersCard(jsonFile){
     return jsonFile.map((element) => {
             return {
+                "id": element.id,
                 "picture": element.image,
                 "name": element.name,
                 "status": element.status,
@@ -13,6 +14,7 @@ export function mapJsonToCharactersCard(jsonFile){
 
 export function mapJsonToCharacterCard(jsonFile){
     return {
+        "id": jsonFile.id,
         "picture": jsonFile.image,
         "name": jsonFile.name,
         "status": jsonFile.status,
