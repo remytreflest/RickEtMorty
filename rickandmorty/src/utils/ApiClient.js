@@ -5,7 +5,7 @@ class ApiClient {
         this.characterUrl = "/character";
         this.locationUrl = "/location";
         this.episodeUrl = "/episode";
-        this.graphQLUrl = "/graphql";
+        this.graphQLUrl = "https://rickandmortyapi.graphcdn.app/";
     }
 
     async getCharactersPaginated(page = 1){
@@ -21,24 +21,32 @@ class ApiClient {
     }
 
     async getEpisodesPaginated(page = 1){
-        return await this.performGraphQLQuery(`{
-            episodes(page: ${page}) {
-                characters {
-                    image
+        return await this.performGraphQLQuery(` 
+            query GetEpisodes($page: Int!) {
+                episodes(page: $page) {
+                    results {
+                        name
+                        air_date
+                        created
+                        episode
+                        characters {
+                            image
+                        }
+                    }
                 }
             }
-        }`);
+          `, page);
     }
 
-    async performGraphQLQuery(graphQLQuery) {
-        return await this.performHttpRequest(this.baseUrl + this.graphQLUrl, {
+    async performGraphQLQuery(graphQLQuery, page) {
+        return await this.performHttpRequest(this.graphQLUrl, {
             headers: {
                 "Content-Type": "application/json"
             },
             method: "POST",
             body: JSON.stringify({
                 query: graphQLQuery,
-                variables: { id: "123" }
+                variables: { "page" : page }
             })
         })
     }
