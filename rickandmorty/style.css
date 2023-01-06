@@ -76,6 +76,9 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
 .btn-5.blue {
   background: rgb(16, 0, 161);
 }
+.btn-5.gray {
+  background: rgb(71, 71, 71);
+}
 .btn-5:hover {
   color: #f0094a;
   background: transparent;
@@ -96,17 +99,7 @@ background: linear-gradient(0deg, rgba(255,27,0,1) 0%, rgba(251,75,2,1) 100%);
    4px 4px 5px 0px #0002;
   transition:400ms ease all;
 }
-.btn-5:after{
-  right:inherit;
-  top:inherit;
-  left:0;
-  bottom:0;
-}
-.btn-5:hover:before,
-.btn-5:hover:after{
-  width:100%;
-  transition:800ms ease all;
-}
+
 
 
 
@@ -277,4 +270,25 @@ input:focus ~ .highlight {
     width: 100%;
     justify-content:flex-start;
     flex-wrap:wrap;
+}
+
+.pagination-div {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  top: 45%;
+  right: 0px;
+  height: 3000px;
+}
+
+.pagination-div * {
+  position: fixed;
+  right: 0px;
+  width: 150px;
+}
+.pagination-div .purple, .pagination-div .prev.gray {
+  top: 45%;
+}
+.pagination-div .orange, .pagination-div .next.gray {
+  top: 55%;
 }

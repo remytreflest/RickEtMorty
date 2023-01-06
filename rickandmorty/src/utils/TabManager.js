@@ -14,6 +14,7 @@ class TabManager {
         },
         charactersList: {
           component: charactersList,
+          params: [{ page: 0 }]
         },
         character: {
           component: Character,
