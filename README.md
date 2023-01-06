@@ -21,7 +21,19 @@
   - ```npm install``` [^4]
   - ```npm run dev``` [^5]
  - Ouvrir un navigateur et se rendre sur l'url affichée dans votre terminal
+- Pour avoir la possibiliter de créer des tests unitaires et de les tester en local :
+  - ```npm install -D vitest```
+  - ```npm install jsdom```
+- Create vite.config.js à la racine contenant :
+ ```
+import { defineConfig } from "vite";
 
+export default defineConfig({
+    test: {
+        environment: 'jsdom',
+    }
+});
+```
 
 [^1]: *Initialise Git dans le dossier afin de pouvoir utiliser certaines commandes*
 
