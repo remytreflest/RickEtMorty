@@ -7,7 +7,15 @@
 export function generateCharacterCard(character) {
     return {
       tagName: 'div',
-      classList: ['card'],
+      classList: ['card'],eventListener: {
+        name: 'click',
+        function: () => {
+          console.log("HELLO")
+        }
+      },
+      attributes: {
+        'data-id': character.id
+      },
       children: [
         {
           tagName: 'img',
