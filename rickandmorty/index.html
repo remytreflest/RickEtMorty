@@ -20,7 +20,9 @@
       <div id="search-bar">
         <div id="searchInputDiv" class="group">
           <label for="searchInput">Nom du personnage :</label>
-          <input type="text" name="searchInput" id="searchInput">
+          <div id="search-input-div">
+            <input type="text" name="searchInput" id="searchInput">
+          </div>
           <span class="highlight"></span>
           <span class="bar"></span>
         </div>
@@ -38,17 +40,81 @@
     <script type="module">
       import createDOMElement from "./src/dom/createDOMElement.js";
 
+      // Generate <option> tags for the search filter <select>
       const searchFilterSelect = document.getElementById("search-filter-select");
       ['name', 'status', 'species', 'type', 'gender'].forEach((filter) => {
-        let filterDOMElement = createDOMElement({
+        let optionDOMElement = createDOMElement({
           tagName: 'option',
           text: filter,
           attributes: {
             value: filter
           }
         })
-        searchFilterSelect.appendChild(filterDOMElement)
+        searchFilterSelect.appendChild(optionDOMElement)
       })
+
+      // Change the search input value type
+      reformatSearchInput();
+
+      /* * * * * * * *
+      *   FUNCTIONS   *
+      * * * * * * * * */
+
+      function appendSearchSelectTagWithChildren(children) {
+        // compute object to create
+        let selectObjectToCreate = {
+          tagName: 'select',
+          attributes: {
+            id: 'searchInput',
+            name: 'searchInput'
+          },
+          children: []
+        }
+
+        // Compute children elements <option>
+        children.forEach((child) => {
+          selectObjectToCreate.children.push({
+            tagName: 'option',
+            text: child,
+            attributes: {
+              value: child
+            }
+          })
+        })
+
+        // create DOM element
+        let selectDOMElement = createDOMElement(selectObjectToCreate)
+        console.log(selectDOMElement)
+        // append select DOM element to the page
+        document.getElementById('search-input-div').appendChild(selectDOMElement);
+      }
+
+      function reformatSearchInput() {
+        searchFilterSelect.addEventListener('change', function() {
+          let searchInputDiv = document.getElementById("search-input-div");
+          switch (searchFilterSelect.value) {
+            case 'gender':
+              searchInputDiv.innerHTML = '';
+              appendSearchSelectTagWithChildren(['female', 'male', 'genderless', 'unknown']);
+              break;
+            case 'status':
+              searchInputDiv.innerHTML = '';
+              appendSearchSelectTagWithChildren(['alive', 'dead', 'unknown']);
+              break;
+            default:
+              searchInputDiv.innerHTML = '';
+              searchInputDiv.appendChild(createDOMElement({
+                tagName: 'input',
+                attributes: {
+                  type: 'text',
+                  id: 'searchInput',
+                  name: 'searchInput'
+                }
+              }));
+          }
+        })
+      }
+
     </script>
 
     <div id="app"></div>
