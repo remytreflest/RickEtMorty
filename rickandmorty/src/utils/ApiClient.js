@@ -20,6 +20,10 @@ class ApiClient {
         return await this.performHttpRequest(this.baseUrl + this.characterUrl + `/?name=${name}`);
     }
 
+    async getCharactersFilteredByParam(param, value){
+        return await this.performHttpRequest(this.baseUrl + this.characterUrl + `/?${param}=${value}`);
+    }
+
     async getEpisodesPaginated(page = 1){
         return await this.performGraphQLQuery(` 
             query GetEpisodes($page: Int!) {

@@ -16,14 +16,107 @@
       <button data-tabId="charactersList" id="charactersList" class="custom-btn btn-5 orange">Liste des personnages</button>
       <button data-tabId="searchingPage" class="custom-btn btn-5 purple">Recherche de personnage</button>
       <button data-tabId="episodesList" class="custom-btn btn-5 blue">Liste des épisodes</button>
-      <div id="searchInputDiv" class="group">
-        <input type="text" name="searchInput" id="searchInput">
-        <span class="highlight"></span>
-        <span class="bar"></span>
-        <label for="searchInput">Nom du personnage :</label>
+
+      <div id="search-bar">
+        <div id="searchInputDiv" class="group">
+          <label for="searchInput">Nom du personnage :</label>
+          <div id="search-input-div">
+            <input type="text" name="searchInput" id="searchInput">
+          </div>
+          <span class="highlight"></span>
+          <span class="bar"></span>
+        </div>
+        <div id="searchFilterDiv" class="group">
+          <label for="search-filter-select">Filtre</label>
+          <select name="search-filter-select" id="search-filter-select">
+
+          </select>
+        </div>
         <button id="submitSearch">Rechercher</button>
       </div>
     </header>
+
+    <!-- SEARCH BAR SCRIPT -->
+    <script type="module">
+      import createDOMElement from "./src/dom/createDOMElement.js";
+
+      // Generate <option> tags for the search filter <select>
+      const searchFilterSelect = document.getElementById("search-filter-select");
+      ['name', 'status', 'species', 'type', 'gender'].forEach((filter) => {
+        let optionDOMElement = createDOMElement({
+          tagName: 'option',
+          text: filter,
+          attributes: {
+            value: filter
+          }
+        })
+        searchFilterSelect.appendChild(optionDOMElement)
+      })
+
+      // Change the search input value type
+      reformatSearchInput();
+
+      /* * * * * * * *
+      *   FUNCTIONS   *
+      * * * * * * * * */
+
+      function appendSearchSelectTagWithChildren(children) {
+        // compute object to create
+        let selectObjectToCreate = {
+          tagName: 'select',
+          attributes: {
+            id: 'searchInput',
+            name: 'searchInput'
+          },
+          children: []
+        }
+
+        // Compute children elements <option>
+        children.forEach((child) => {
+          selectObjectToCreate.children.push({
+            tagName: 'option',
+            text: child,
+            attributes: {
+              value: child
+            }
+          })
+        })
+
+        // create DOM element
+        let selectDOMElement = createDOMElement(selectObjectToCreate)
+        console.log(selectDOMElement)
+        // append select DOM element to the page
+        document.getElementById('search-input-div').appendChild(selectDOMElement);
+      }
+
+      function reformatSearchInput() {
+        searchFilterSelect.addEventListener('change', function() {
+          let searchInputDiv = document.getElementById("search-input-div");
+          switch (searchFilterSelect.value) {
+            case 'gender':
+              searchInputDiv.innerHTML = '';
+              appendSearchSelectTagWithChildren(['female', 'male', 'genderless', 'unknown']);
+              break;
+            case 'status':
+              searchInputDiv.innerHTML = '';
+              appendSearchSelectTagWithChildren(['alive', 'dead', 'unknown']);
+              break;
+            default:
+              searchInputDiv.innerHTML = '';
+              searchInputDiv.appendChild(createDOMElement({
+                tagName: 'input',
+                attributes: {
+                  type: 'text',
+                  id: 'searchInput',
+                  name: 'searchInput'
+                }
+              }));
+          }
+        })
+      }
+
+    </script>
+
     <div id="app"></div>
     <script type="module" src="/main.js"></script>
   </body>
